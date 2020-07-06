@@ -3,7 +3,7 @@ default: &default
   pool: 5
   encoding: unicode
   host: localhost
-  username: bombinsky
+  username:
   password:
 
 development:
