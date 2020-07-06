@@ -1,0 +1,9 @@
+<div class="jumbotron" >
+  <h1 class="display-4">Welcome</h1>
+  <p class="lead">You've just successfully signed as <%= current_user.nickname %> and you ready to go.</p>
+  <hr class="my-4">
+  <p>Please use the button below to create a request of urls to external resources from your home line.</p>
+  <p class="lead">
+    <%= link_to 'Start now', new_external_urls_request_path, class: 'btn btn-primary btn-lg' %>
+  </p>
+</div>

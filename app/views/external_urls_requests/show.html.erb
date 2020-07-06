@@ -1,0 +1,26 @@
+<div class="card text-center">
+  <div class="card-body">
+    <p class="h4 mb-4">Following request of urls to external resources has been created</p>
+
+    <p class="card-text text-secondary">
+      <%= render 'shared/details', locals: { label: 'Home line of Twitter user', value: current_user.nickname } %>
+      <%= render 'shared/details', locals: { label: 'Tweets created since', value: @external_urls_request.start_time } %>
+      <%= render 'shared/details', locals: { label: 'Tweets created up to', value: @external_urls_request.end_time } %>
+      <%= render 'shared/details', locals: { label: 'The results will be sent to', value: @external_urls_request.email } %>
+    </p>
+    <br/>
+
+    <p class="card-text text-secondary">
+      Usually results are ready in less than one minute but delivering the message can take some time.<br/>
+      Please check your mailbox now and wait patiently for the email with following subject.<br/>
+    </p>
+
+    <p>
+      <%= @external_urls_request.delivery_subject %>
+    </p>
+    <br/>
+    <p>
+      <%= link_to "Back to homepage", root_path, class: 'btn btn-primary' %>
+    </p>
+  </div>
+</div>

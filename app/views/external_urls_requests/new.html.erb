@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Request urls to external resources</h4>
+
+    <p class="card-text text-center text-secondary">Please provide proper email address then check the inbox</p>
+
+    <p class="card-text">
+      <%= bootstrap_form_for(@external_urls_request, method: 'post', layout: :horizontal) do |f| %>
+          <%= f.email_field :email %>
+          <%= f.datetime_local_field :start_time, label: 'Since' %>
+          <%= f.datetime_local_field :end_time, label: 'Up to'  %>
+          <%= f.submit 'Create request', class: 'btn btn-primary' %>
+      <% end %>
+    </p>
+  </div>
+</div>
