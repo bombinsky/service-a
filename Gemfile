@@ -27,27 +27,26 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Twitter gem
 gem 'twitter'
-
 # Omniauth Twitter gem
 gem 'omniauth-twitter'
-
 # Bootstrap form
 gem 'bootstrap_form', '~> 4.0'
-
 # Postrgres
 gem 'pg'
-
 # Bunny
 gem 'bunny', '>= 2.14.1'
-
+# Sneakers workers
 gem 'sneakers'
-
 # final_redirect_url
 gem 'final_redirect_url'
+# draper
+gem 'draper'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Factory Bot Rails
+  gem 'factory_bot_rails'
   # Rspec rails
   gem 'rspec-rails', '~> 4.0.0'
 end
@@ -78,7 +77,7 @@ group :test do
 
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
-
+  gem 'database_cleaner-active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

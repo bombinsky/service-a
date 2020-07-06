@@ -1,5 +1,6 @@
-class ExternalUrlsRequest < ApplicationRecord
+# frozen_string_literal: true
 
+class ExternalUrlsRequest < ApplicationRecord
   belongs_to :user
   has_many :external_urls
 
@@ -11,16 +12,12 @@ class ExternalUrlsRequest < ApplicationRecord
 
   enum status: %i[created processed sent]
 
-  def delivery_subject
-    "#{ user.nickname }'s urls between #{ start_time } and #{ end_time }"
-  end
-
   private
 
   after_initialize do
     if self.new_record?
-      self.start_time ||= Time.now - 1.day
-      self.end_time ||= Time.now
+      self.start_time ||= Time.current - 1.day
+      self.end_time ||= Time.current
     end
   end
 

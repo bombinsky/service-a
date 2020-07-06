@@ -1,7 +1,7 @@
 class ProcessExternalUrlsDeliveryRequest
 
   def initialize(request)
-    @request = request
+    @request = request.decorate
   end
 
   def call
