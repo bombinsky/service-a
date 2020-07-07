@@ -2,12 +2,7 @@
 
 describe WelcomeController do
   describe 'GET index' do
-
-    context 'when user is not authenticated' do
-      before { get :index }
-
-      it_behaves_like 'demanding authenticated user'
-    end
+    it_behaves_like 'demanding authenticated user', :get, :index
 
     context 'when user is authenticated' do
       before do
