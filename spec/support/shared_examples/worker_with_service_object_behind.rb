@@ -21,4 +21,4 @@ shared_examples 'worker with service object behind' do |service_object_class|
       expect(worker.logger).to have_received(:info).with('some error message')
     end
   end
- end
+end

@@ -78,7 +78,7 @@ describe ProcessExternalUrlsRequest do
       end
 
       context 'when there are tweets but all internal' do
-        include_context 'tweet with two urls', 'https://twitter.com/54rw', 'https://twitter.com/some_url'
+        include_context 'with tweet having two urls', 'https://twitter.com/54rw', 'https://twitter.com/some_url'
 
         it_behaves_like 'processed external urls request'
 
@@ -88,7 +88,7 @@ describe ProcessExternalUrlsRequest do
       end
 
       context 'when there are tweets and one is external' do
-        include_context 'tweet with two urls', 'https://twitter.com/54rw', 'https://youtube.com/some_url'
+        include_context 'with tweet having two urls', 'https://twitter.com/54rw', 'https://youtube.com/some_url'
 
         it_behaves_like 'processed external urls request'
 

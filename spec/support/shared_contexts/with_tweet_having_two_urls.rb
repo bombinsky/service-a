@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-shared_context 'tweet with two urls' do |final_url_1, final_url_2|
+shared_context 'with tweet having two urls' do |final_url_1, final_url_2|
   let(:tweets) { [build(:tweet, created_at: external_urls_request.start_time + 1.second)] }
   let(:external_urls_request) { create :external_urls_request }
 
