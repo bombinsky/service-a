@@ -9,14 +9,9 @@ describe ProcessExternalUrlsRequest do
   let(:publisher) { instance_double(Publish) }
   let(:event_payload) { { request_id: external_urls_request.id }.to_json }
   let(:tweets) { [ build(:tweet, :before_request_range) ] }
-
-  let(:page1_options) do
-    { exclude_replies: true, trim_user: true, include_rts: false, tweet_mode: :extended, count: 200 }
-  end
-
-  let(:page2_options) do
-    page1_options.merge(max_id: tweets.first.id.pred)
-  end
+  let(:urls) { tweets.first.full_text.scan(described_class::URL_REGEXP) }
+  let(:page1_options) { { exclude_replies: true, trim_user: true, include_rts: false, tweet_mode: :extended, count: 200 } }
+  let(:page2_options) { page1_options.merge(max_id: tweets.first.id.pred) }
 
   before do
     allow(TwitterGateway).to receive(:new).and_return(twitter_gateway)
@@ -27,6 +22,7 @@ describe ProcessExternalUrlsRequest do
 
   shared_examples 'processed external urls request' do
     it { is_expected.to be_a ExternalUrlsRequest }
+    it { is_expected.to be_persisted }
     it { is_expected.to be_processed }
 
     it 'publishes event in external_urls_delivery_requests queue' do
@@ -44,9 +40,21 @@ describe ProcessExternalUrlsRequest do
     end
   end
 
-  context 'when there are tweets' do
-    let(:urls) { tweets.first.full_text.scan(described_class::URL_REGEXP) }
+  context 'when there are tweets but all internal' do
+    before do
+      tweets.first.created_at = external_urls_request.start_time + 1.second
+      allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.first).and_return('https://twitter.com/54rw')
+      allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.last).and_return('https://twitter.com/some_url')
+    end
 
+    it_behaves_like 'processed external urls request'
+
+    it 'does not create external urls' do
+      expect { service_call }.not_to change(ExternalUrl, :count)
+    end
+  end
+
+  context 'when there are tweets and one is external' do
     before do
       tweets.first.created_at = external_urls_request.start_time + 1.second
       allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.first).and_return('https://twitter.com/54rw')
@@ -55,7 +63,7 @@ describe ProcessExternalUrlsRequest do
 
     it_behaves_like 'processed external urls request'
 
-    it 'crates external urls' do
+    it 'creates external url' do
       expect { service_call }.to change(ExternalUrl, :count).by(1)
     end
   end
