@@ -1,7 +1,7 @@
 class ProcessExternalUrlsDeliveryRequest
 
   def initialize(request)
-    @request = request.decorate
+    @request = request
   end
 
   def call
@@ -21,7 +21,7 @@ class ProcessExternalUrlsDeliveryRequest
   def delivery_params
     {
       mail_to: request.email,
-      subject: request.delivery_subject,
+      subject: request.decorate.delivery_subject,
       headers: { 'Reply-To': 'no-reply@anywhere.com'},
       template_name: 'external_urls_request_results',
       template_payload: template_payload

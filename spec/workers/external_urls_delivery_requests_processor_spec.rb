@@ -12,12 +12,6 @@ describe ExternalUrlsDeliveryRequestsProcessor do
       it { is_expected.to eq :ack }
     end
 
-    context 'when ProcessExternalUrlsRequest is not processed' do
-      let(:external_urls_request) { create :external_urls_request, :processed }
-
-      it { is_expected.to eq :requeue }
-    end
-
     context 'when ProcessExternalUrlsRequest will failure' do
       before do
         allow(ProcessExternalUrlsDeliveryRequest).to receive(:new).and_raise(RuntimeError, 'some error message')

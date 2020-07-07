@@ -10,5 +10,15 @@ FactoryBot.define do
     trait :processed do
       status { :processed }
     end
+
+    trait :with_external_urls do
+      transient { external_urls_count { 1 } }
+
+      status { :processed }
+      after(:create) do |request, evaluator|
+        create_list(:external_url, evaluator.external_urls_count, external_urls_request: request)
+      end
+
+    end
   end
 end
