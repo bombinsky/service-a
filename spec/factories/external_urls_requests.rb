@@ -21,5 +21,12 @@ FactoryBot.define do
         create_list(:external_url, evaluator.external_urls_count, external_urls_request: request)
       end
     end
+
+    trait :with_fixed_dates do
+      start_time { '2020-01-01 12:30:00' }
+      end_time { '2020-01-04 11:33:00' }
+      created_at { '2020-01-10 22:55:33' }
+      updated_at { '2020-01-11 23:11:22' }
+    end
   end
 end
