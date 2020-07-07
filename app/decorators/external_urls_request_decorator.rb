@@ -4,7 +4,7 @@ class ExternalUrlsRequestDecorator < Draper::Decorator
   TIME_FORMAT = "%Y-%m-%d %H:%M"
   TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-  delegate :email, :user, :external_urls
+  delegate_all
 
   def delivery_subject
     "External urls in #{ object.user.nickname }'s home line between #{ start_time } and #{ end_time }"

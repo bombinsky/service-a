@@ -4,10 +4,6 @@ describe ExternalUrlsRequestDecorator do
   let(:object) { build :external_urls_request }
   subject(:decorator) { described_class.new(object) }
 
-  it { is_expected.to respond_to :email }
-  it { is_expected.to respond_to :user }
-  it { is_expected.to respond_to :external_urls }
-
   describe '#delivery_subject' do
     let(:since) { object.start_time.strftime(described_class::TIME_FORMAT) }
     let(:up_to) { object.end_time.strftime(described_class::TIME_FORMAT) }
