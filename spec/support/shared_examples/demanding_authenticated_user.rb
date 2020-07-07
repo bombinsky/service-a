@@ -1,4 +1,4 @@
-shared_examples 'requires authenticated user' do
+shared_examples 'demanding authenticated user' do
   it 'redirects user to session new' do
     expect(response).to redirect_to(new_session_path)
   end

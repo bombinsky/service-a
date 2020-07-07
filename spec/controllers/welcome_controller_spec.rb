@@ -6,7 +6,7 @@ describe WelcomeController do
     context 'when user is not authenticated' do
       before { get :index }
 
-      it_behaves_like 'requires authenticated user'
+      it_behaves_like 'demanding authenticated user'
     end
 
     context 'when user is authenticated' do
