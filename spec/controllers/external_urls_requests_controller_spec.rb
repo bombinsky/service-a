@@ -1,20 +1,6 @@
 # frozen_string_literal: true
 
 describe ExternalUrlsRequestsController do
-  describe 'GET new' do
-    it_behaves_like 'demanding authenticated user', :get, :new
-
-    context 'when user is authenticated' do
-      before do
-        authenticate(create(:user))
-
-        get :new
-      end
-
-      it_behaves_like 'successful html response with template', :new
-    end
-  end
-
   describe 'GET show' do
     it_behaves_like 'demanding authenticated user', :get, :show, params: { id: 1 }
 
@@ -29,6 +15,19 @@ describe ExternalUrlsRequestsController do
 
       it_behaves_like 'successful html response with template', :show
     end
+  end
+
+  describe 'GET new' do
+    context 'when user is authenticated' do
+      before do
+        authenticate(create(:user))
+        get :new
+      end
+
+      it_behaves_like 'successful html response with template', :new
+    end
+
+    it_behaves_like 'demanding authenticated user', :get, :new
   end
 
   describe 'POST create' do

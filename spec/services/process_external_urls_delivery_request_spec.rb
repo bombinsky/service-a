@@ -2,7 +2,9 @@
 
 describe ProcessExternalUrlsDeliveryRequest do
   let(:service) { described_class.new(external_urls_request) }
-  let(:external_urls_request) { create(:external_urls_request, :with_external_urls, external_urls_count: 2) }
+  let(:external_urls_request) do
+    create(:external_urls_request, :with_external_urls, :with_fixed_dates, external_urls_count: 2)
+  end
   let(:decorated_request) { external_urls_request.decorate }
   let(:delivery_gateway) { instance_double(DeliveryGateway) }
   let(:delivery_result) { OpenStruct.new(success?: true) }
@@ -11,8 +13,8 @@ describe ProcessExternalUrlsDeliveryRequest do
     {
       nickname: decorated_request.user.nickname,
       request_id: decorated_request.id,
-      request_created_at: decorated_request.created_at,
-      request_completed_at: decorated_request.updated_at,
+      request_created_at: '2020-01-10 22:55:33',
+      request_completed_at: '2020-01-11 23:11:22',
       urls: decorated_request.external_urls.map(&:value)
     }
   end
