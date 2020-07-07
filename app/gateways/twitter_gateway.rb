@@ -6,10 +6,6 @@ class TwitterGateway
     client(user).home_timeline(options)
   end
 
-  def rate_limit_status(user)
-    client(user).rate_limit_status(user)
-  end
-
   private
 
   def client(user)
