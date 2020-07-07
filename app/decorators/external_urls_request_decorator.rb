@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+# ExternalUrlsRequestDecorator with few methods required to prepare email payload
 class ExternalUrlsRequestDecorator < Draper::Decorator
-  TIME_FORMAT = "%Y-%m-%d %H:%M"
-  TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S"
+  TIME_FORMAT = '%Y-%m-%d %H:%M'
+  TIMESTAMP_FORMAT = '%Y-%m-%d %H:%M:%S'
 
   delegate_all
 

@@ -20,7 +20,6 @@ FactoryBot.define do
       after(:create) do |request, evaluator|
         create_list(:external_url, evaluator.external_urls_count, external_urls_request: request)
       end
-
     end
   end
 end

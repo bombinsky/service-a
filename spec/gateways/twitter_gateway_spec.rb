@@ -2,7 +2,7 @@
 
 describe TwitterGateway do
   describe '#home_timeline' do
-    subject(:home_timeline) { TwitterGateway.new.home_timeline(user, options)}
+    subject(:home_timeline) { described_class.new.home_timeline(user, options) }
 
     let(:user) { build :user }
     let(:options) { { opt1: 'opt1' } }
@@ -13,9 +13,6 @@ describe TwitterGateway do
 
     before do
       stub_const('ENV', 'TWITTER_CONSUMER_KEY' => 'consumer_key', 'TWITTER_CONSUMER_SECRET' => 'consumer_secret')
-    end
-
-    before do
       allow(Twitter::REST::Client).to receive(:new).and_yield(config).and_return(twitter_client)
       allow(config).to receive(:consumer_key=)
       allow(config).to receive(:consumer_secret=)
@@ -33,12 +30,27 @@ describe TwitterGateway do
       expect(twitter_client).to have_received(:home_timeline).with(options)
     end
 
-    it "creates twitter client correctly" do
+    it 'creates twitter client using proper consumer_key' do
       home_timeline
 
       expect(config).to have_received(:consumer_key=).with('consumer_key')
+    end
+
+    it 'creates twitter client using proper consumer_secret' do
+      home_timeline
+
       expect(config).to have_received(:consumer_secret=).with('consumer_secret')
+    end
+
+    it 'creates twitter client using proper access_token' do
+      home_timeline
+
       expect(config).to have_received(:access_token=).with(user.token)
+    end
+
+    it 'creates twitter client using proper access_token_secret' do
+      home_timeline
+
       expect(config).to have_received(:access_token_secret=).with(user.secret)
     end
   end

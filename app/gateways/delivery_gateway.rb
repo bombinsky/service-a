@@ -1,7 +1,14 @@
 class DeliveryGateway
 
   def send_email(from:, to:, subject:, headers:, template_name:, template_payload:)
-    params = { from: from, to: to, subject: subject, headers: headers, template_name: template_name, template_payload: template_payload}
+    params = {
+      from: from,
+      to: to,
+      subject: subject,
+      headers: headers,
+      template_name: template_name,
+      template_payload: template_payload
+    }
     connection.post('/emails', params.to_json, content_type: 'application/json')
   end
 
@@ -15,5 +22,3 @@ class DeliveryGateway
     end
   end
 end
-
-

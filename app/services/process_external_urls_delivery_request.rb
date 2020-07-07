@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Service Object responsible for delivery processed request results
 class ProcessExternalUrlsDeliveryRequest
   FROM = 'twitter_reader@service-a.com'
   REPLY_TO = 'no-reply@anywhere.com'

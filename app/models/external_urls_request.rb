@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This model represents ExternalUrlsRequest
 class ExternalUrlsRequest < ApplicationRecord
   belongs_to :user
   has_many :external_urls
@@ -9,14 +10,14 @@ class ExternalUrlsRequest < ApplicationRecord
   validates :end_time, presence: true
 
   validate :end_time_after_start_time
-  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   enum status: %i[created processed sent]
 
   private
 
   after_initialize do
-    if self.new_record?
+    if new_record?
       self.start_time ||= Time.current - 1.day
       self.end_time ||= Time.current
     end

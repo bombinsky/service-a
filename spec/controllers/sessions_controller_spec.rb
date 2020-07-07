@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 describe SessionsController do
-
   describe 'DELETE destroy' do
     it_behaves_like 'demanding authenticated user', :delete, :destroy
 
@@ -17,7 +16,7 @@ describe SessionsController do
         expect(session).to have_received(:delete).with(:user_id)
       end
 
-      it "redirects user to root path" do
+      it 'redirects user to root path' do
         expect(response).to redirect_to(root_path)
       end
     end
@@ -37,13 +36,15 @@ describe SessionsController do
     end
 
     let(:auth_hash) do
-      OmniAuth::AuthHash.new({ provider: 'twitter', uid: '123545',
-        info: { nickname: 'nickname', email: 'nickname@email.com'},
+      OmniAuth::AuthHash.new(
+        provider: 'twitter',
+        uid: '123545',
+        info: { nickname: 'nickname', email: 'nickname@email.com' },
         credentials: { token: 'token', secret: 'secret' }
-      })
+      )
     end
 
-    it "redirects user to root path" do
+    it 'redirects user to root path' do
       expect(response).to redirect_to(root_path)
     end
   end

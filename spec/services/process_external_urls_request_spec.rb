@@ -33,11 +33,7 @@ describe ProcessExternalUrlsRequest do
         allow(twitter_error).to receive(:rate_limit).and_return(OpenStruct.new(reset_in: 1))
         allow_service_call(Publish, with: ['external_urls_delivery_requests', event_payload])
         allow(service).to receive(:sleep)
-      end
 
-      let(:twitter_error) { Twitter::Error::TooManyRequests.new }
-
-      it 'does not raise error because it sleeps until twitter api reset in time then retry' do
         call_count = 0
         allow(twitter_gateway).to receive(:home_timeline) do
           call_count += 1
@@ -50,8 +46,16 @@ describe ProcessExternalUrlsRequest do
             []
           end
         end
+      end
 
+      let(:twitter_error) { Twitter::Error::TooManyRequests.new }
+
+      it 'does not raise error' do
         expect { service_call }.not_to raise_error
+      end
+
+      it 'sleeps until twitter api reset in time then retry' do
+        service_call
 
         expect(service).to have_received(:sleep).with(2)
       end
