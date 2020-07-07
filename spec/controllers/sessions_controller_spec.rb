@@ -35,14 +35,7 @@ describe SessionsController do
       post :create
     end
 
-    let(:auth_hash) do
-      OmniAuth::AuthHash.new(
-        provider: 'twitter',
-        uid: '123545',
-        info: { nickname: 'nickname', email: 'nickname@email.com' },
-        credentials: { token: 'token', secret: 'secret' }
-      )
-    end
+    include_context 'with auth hash'
 
     it 'redirects user to root path' do
       expect(response).to redirect_to(root_path)

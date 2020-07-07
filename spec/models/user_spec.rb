@@ -11,14 +11,7 @@ describe User do
       described_class.find_or_create_with_twitter_auth_hash(auth_hash)
     end
 
-    let(:auth_hash) do
-      OmniAuth::AuthHash.new(
-        provider: 'twitter',
-        uid: '123545',
-        info: { nickname: 'nickname', email: 'nickname@email.com' },
-        credentials: { token: 'token', secret: 'secret' }
-      )
-    end
+    include_context 'with auth hash'
 
     context 'when user does not exist' do
       it { is_expected.to be_an described_class }

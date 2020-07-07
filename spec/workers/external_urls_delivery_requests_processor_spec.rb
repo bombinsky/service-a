@@ -24,6 +24,7 @@ describe ExternalUrlsDeliveryRequestsProcessor do
 
       it 'logs error message' do
         work
+
         expect(worker.logger).to have_received(:info).with('some error message')
       end
     end

@@ -8,8 +8,8 @@ describe ExternalUrlsRequestDecorator do
   describe '#delivery_subject' do
     subject(:delivery_subject) { decorator.delivery_subject }
 
-    let(:since) { object.start_time.strftime(described_class::TIME_FORMAT) }
-    let(:up_to) { object.end_time.strftime(described_class::TIME_FORMAT) }
+    let(:since) { decorator.start_time }
+    let(:up_to) { decorator.end_time }
 
     it { is_expected.to eq "External urls in #{object.user.nickname}'s home line between #{since} and #{up_to}" }
   end
@@ -21,19 +21,19 @@ describe ExternalUrlsRequestDecorator do
   end
 
   describe '#end_time' do
-    subject(:start_time) { decorator.end_time }
+    subject(:end_time) { decorator.end_time }
 
     it { is_expected.to eq object.end_time.strftime(described_class::TIME_FORMAT) }
   end
 
   describe '#created_at' do
-    subject(:start_time) { decorator.created_at }
+    subject(:created_at) { decorator.created_at }
 
     it { is_expected.to eq object.created_at.strftime(described_class::TIMESTAMP_FORMAT) }
   end
 
   describe '#updated_at' do
-    subject(:start_time) { decorator.updated_at }
+    subject(:updated_at) { decorator.updated_at }
 
     it { is_expected.to eq object.updated_at.strftime(described_class::TIMESTAMP_FORMAT) }
   end
