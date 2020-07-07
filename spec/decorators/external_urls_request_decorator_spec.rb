@@ -10,7 +10,7 @@ describe ExternalUrlsRequestDecorator do
 
     subject(:delivery_subject) { decorator.delivery_subject }
 
-    it { is_expected.to eq "External urls in #{ object.user.nickname }'s home line between #{ since } and #{ up_to }" }
+    it { is_expected.to eq "External urls in #{object.user.nickname}'s home line between #{since} and #{up_to}" }
   end
 
   describe '#start_time' do

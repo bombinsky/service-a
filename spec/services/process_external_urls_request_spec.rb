@@ -9,7 +9,7 @@ describe ProcessExternalUrlsRequest do
   let(:twitter_gateway) { instance_double(TwitterGateway) }
   let(:publisher) { instance_double(Publish) }
   let(:event_payload) { { request_id: external_urls_request.id }.to_json }
-  let(:tweets) { [ build(:tweet, :before_request_range) ] }
+  let(:tweets) { [build(:tweet, :before_request_range)] }
   let(:urls) { tweets.first.full_text.scan(described_class::URL_REGEXP) }
   let(:page1_options) { { exclude_replies: true, trim_user: true, include_rts: false, tweet_mode: :extended, count: 200 } }
   let(:page2_options) { page1_options.merge(max_id: tweets.first.id.pred) }

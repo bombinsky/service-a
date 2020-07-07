@@ -7,7 +7,7 @@ class ExternalUrlsRequestDecorator < Draper::Decorator
   delegate_all
 
   def delivery_subject
-    "External urls in #{ object.user.nickname }'s home line between #{ start_time } and #{ end_time }"
+    "External urls in #{object.user.nickname}'s home line between #{start_time} and #{end_time}"
   end
 
   def start_time

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe ExternalUrlsDeliveryRequestsProcessor do
   describe '#work' do
     subject(:work) { worker.work(msg) }

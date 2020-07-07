@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :external_urls_request do
     user
-    sequence(:email) { |i| "email-#{ i }@not_existing.domain.com" }
+    sequence(:email) { |i| "email-#{i}@not_existing.domain.com" }
     start_time { Time.current - 11.days }
     end_time { Time.current - 10.days }
     created_at { Time.current - 2.days }

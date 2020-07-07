@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_examples 'successful html response with template' do |template_name|
   it 'responds with ok' do
     expect(response.status).to eq(200)

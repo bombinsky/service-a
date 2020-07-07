@@ -1,5 +1,6 @@
-shared_examples 'demanding authenticated user' do |method, action, options = {}|
+# frozen_string_literal: true
 
+shared_examples 'demanding authenticated user' do |method, action, options = {}|
   context 'when user is not authenticated' do
     before { public_send(method, action, options) }
 

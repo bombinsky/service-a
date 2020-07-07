@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe DeliveryGateway do
   describe '#send_email' do
     subject(:send_email) { DeliveryGateway.new.send_email(delivery_params)}
@@ -25,16 +27,14 @@ describe DeliveryGateway do
       )
 
       stub_request(:post, "http://service_b_url/emails").
-        with(
-          body: delivery_params.to_json,
-          headers: {
-            'Accept'=>'*/*',
-            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization'=> authorization,
-            'Content-Type'=>'application/json',
-            'User-Agent'=>'Faraday v1.0.1'
-          }).
-        to_return(status: response_status, body: "", headers: {})
+        with( body: delivery_params.to_json,
+              headers: {
+                'Accept'=>'*/*',
+                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                'Authorization'=> authorization,
+                'Content-Type'=>'application/json',
+                'User-Agent'=>'Faraday v1.0.1'
+              }).to_return(status: response_status, body: "", headers: {})
     end
 
     context 'when delivery success' do

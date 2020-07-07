@@ -12,7 +12,7 @@ application up and running.
 
 2. Run specs to check them
 
-    ``` COVERAGE=true bundle exec rspec ```
+    ``` COVERAGE=true rspec ```
     ``` open tmp/reports/coverage/index.html ```
 
 3. Launch console if needed
@@ -23,6 +23,9 @@ application up and running.
 
     ``` pronto run -r=flay rails_best_practices reek rubocop brakeman -c origin/develop ```
 
+5. Run pronto with cops on whole code like 
+    
+    ```pronto run --commit=$(git log --pretty=format:%H | tail -1)```
 
 
 * Deployment instructions

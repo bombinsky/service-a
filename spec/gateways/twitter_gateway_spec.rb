@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe TwitterGateway do
   describe '#home_timeline' do
     subject(:home_timeline) { TwitterGateway.new.home_timeline(user, options)}
