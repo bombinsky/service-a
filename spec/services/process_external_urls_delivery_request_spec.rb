@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 describe ProcessExternalUrlsDeliveryRequest do
-  subject(:service_call) { service.call }
-
   let(:service) { described_class.new(external_urls_request) }
   let(:external_urls_request) { create(:external_urls_request, :with_external_urls, external_urls_count: 2) }
   let(:decorated_request) { external_urls_request.decorate }
   let(:delivery_gateway) { instance_double(DeliveryGateway) }
-  let(:delivery_result) { OpenStruct.new(success?: true)}
+  let(:delivery_result) { OpenStruct.new(success?: true) }
 
   let(:template_payload) do
     {
@@ -30,14 +28,18 @@ describe ProcessExternalUrlsDeliveryRequest do
     }
   end
 
-  before do
-    allow(DeliveryGateway).to receive(:new).and_return delivery_gateway
-    allow(delivery_gateway).to receive(:send_email).with(delivery_params).and_return(delivery_result)
-  end
+  describe '#call' do
+    subject(:service_call) { service.call }
 
-  it 'requests delivery with proper params' do
-    service_call
+    before do
+      allow(DeliveryGateway).to receive(:new).and_return delivery_gateway
+      allow(delivery_gateway).to receive(:send_email).with(delivery_params).and_return(delivery_result)
+    end
 
-    expect(delivery_gateway).to have_received(:send_email).with delivery_params
+    it 'requests delivery with proper params' do
+      service_call
+
+      expect(delivery_gateway).to have_received(:send_email).with delivery_params
+    end
   end
 end
