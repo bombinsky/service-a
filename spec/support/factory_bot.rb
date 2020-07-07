@@ -5,7 +5,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.before(:suite) do
-    factories_to_lint = FactoryBot.factories.reject { |factory| factory.name.in? %i[] }
+    factories_to_lint = FactoryBot.factories.reject { |factory| factory.name.in? %i[tweet] }
 
     FactoryBot.lint factories_to_lint
   end

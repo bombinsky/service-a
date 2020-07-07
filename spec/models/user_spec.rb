@@ -13,9 +13,7 @@ describe User do
     end
 
     let(:auth_hash) do
-      OmniAuth::AuthHash.new({
-        provider: 'twitter',
-        uid: '123545',
+      OmniAuth::AuthHash.new({ provider: 'twitter', uid: '123545',
         info: { nickname: 'nickname', email: 'nickname@email.com'},
         credentials: { token: 'token', secret: 'secret' }
      })
