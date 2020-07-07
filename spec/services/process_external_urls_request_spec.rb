@@ -78,11 +78,7 @@ describe ProcessExternalUrlsRequest do
       end
 
       context 'when there are tweets but all internal' do
-        before do
-          tweets.first.created_at = external_urls_request.start_time + 1.second
-          allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.first).and_return('https://twitter.com/54rw')
-          allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.last).and_return('https://twitter.com/some_url')
-        end
+        include_context 'tweet with two urls', 'https://twitter.com/54rw', 'https://twitter.com/some_url'
 
         it_behaves_like 'processed external urls request'
 
@@ -92,11 +88,7 @@ describe ProcessExternalUrlsRequest do
       end
 
       context 'when there are tweets and one is external' do
-        before do
-          tweets.first.created_at = external_urls_request.start_time + 1.second
-          allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.first).and_return('https://twitter.com/54rw')
-          allow(FinalRedirectUrl).to receive(:final_redirect_url).with(urls.last).and_return('https://youtube.com/some_url')
-        end
+        include_context 'tweet with two urls', 'https://twitter.com/54rw', 'https://youtube.com/some_url'
 
         it_behaves_like 'processed external urls request'
 
