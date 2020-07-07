@@ -1,7 +1,6 @@
 class ProcessExternalUrlsRequest
 
   URL_REGEXP = /https?:\/\/[\S]+/.freeze
-  PAGE_OPTIONS = { exclude_replies: true, trim_user: true, include_rts: false, tweet_mode: :extended, count: 200 }
 
   def initialize(request)
     @request = request
@@ -19,7 +18,7 @@ class ProcessExternalUrlsRequest
 
     persist_request
     publish_request
-    request
+    true
   end
 
   private
@@ -61,6 +60,10 @@ class ProcessExternalUrlsRequest
   end
 
   def options(max_id)
-    PAGE_OPTIONS.merge(max_id: max_id).compact
+    page_options.merge(max_id: max_id).compact
+  end
+
+  def page_options
+    { exclude_replies: true, trim_user: true, include_rts: false, tweet_mode: :extended, count: 200 }
   end
 end

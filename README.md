@@ -3,21 +3,30 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Useful commands
 
-* System dependencies
+1. Run specs to check them
 
-* Configuration
+    ``` rspec ```
 
-* Database creation
+2. Run specs to check them
 
-* Database initialization
+    ``` COVERAGE=true rspec ```
+    ``` open tmp/reports/coverage/index.html ```
 
-* How to run the test suite
+3. Launch console if needed
 
-* Services (job queues, cache servers, search engines, etc.)
+    ``` rails c ```
+
+4. Check new code during development
+
+    ``` pronto run -r=flay rails_best_practices reek rubocop brakeman -c origin/develop ```
+
+5. Run pronto with cops on whole code like 
+    
+    ```pronto run --commit=$(git log --pretty=format:%H | tail -1)```
+
 
 * Deployment instructions
 

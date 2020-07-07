@@ -1,9 +1,15 @@
 class DeliveryGateway
 
-  # mail_to:, subject:, headers:, template_name:, template_payload:
-  def send_email(delivery_params)
-    #connection.post('/emails', delivery_params.to_json, content_type: 'application/json')
-    return OpenStruct.new(success?: true)
+  def send_email(from:, to:, subject:, headers:, template_name:, template_payload:)
+    params = {
+      from: from,
+      to: to,
+      subject: subject,
+      headers: headers,
+      template_name: template_name,
+      template_payload: template_payload
+    }
+    connection.post('/emails', params.to_json, content_type: 'application/json')
   end
 
   private

@@ -5,10 +5,7 @@ class ExternalUrlsDeliveryRequestsProcessor
   def work(msg)
     begin
       request = ExternalUrlsRequest.find(ActiveSupport::JSON.decode(msg)['request_id'])
-
-      return ProcessExternalUrlsDeliveryRequest.new(request).call ? ack! : requeue! if request.processed?
-
-      ack!
+      ProcessExternalUrlsDeliveryRequest.new(request).call ? ack! : requeue!
     rescue Exception => e
       logger.info e.message
       requeue!

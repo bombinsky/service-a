@@ -6,7 +6,7 @@ class ExternalUrlsRequestsController < ApplicationController
   end
 
   def show
-    @external_urls_request = current_user.external_urls_requests.find(params[:id])
+    @external_urls_request = current_user.external_urls_requests.find(params[:id]).decorate
   end
 
   def create

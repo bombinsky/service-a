@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
 
   has_many :external_urls_requests
+
+  validates :nickname, presence: true
+  validates :token, presence: true
+  validates :secret, presence: true
 
   def self.find_or_create_with_twitter_auth_hash(auth_hash)
     user = find_or_initialize_by(provider: auth_hash.provider, uid: auth_hash.uid)

@@ -1,5 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe ExternalUrl, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe ExternalUrl do
+  it { is_expected.to validate_presence_of :value }
+  it { is_expected.to belong_to :external_urls_request }
 end
