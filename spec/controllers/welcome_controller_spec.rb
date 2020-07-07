@@ -11,7 +11,7 @@ describe WelcomeController do
         get :index
       end
 
-      it_behaves_like 'successful html response with template', 'index'
+      it_behaves_like 'successful html response with template', :index
     end
   end
 end

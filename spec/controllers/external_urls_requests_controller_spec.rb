@@ -11,7 +11,7 @@ describe ExternalUrlsRequestsController do
         get :new
       end
 
-      it_behaves_like 'successful html response with template', 'new'
+      it_behaves_like 'successful html response with template', :new
     end
   end
 
@@ -27,7 +27,7 @@ describe ExternalUrlsRequestsController do
 
       let(:external_urls_request) { create :external_urls_request }
 
-      it_behaves_like 'successful html response with template', 'show'
+      it_behaves_like 'successful html response with template', :show
     end
   end
 
