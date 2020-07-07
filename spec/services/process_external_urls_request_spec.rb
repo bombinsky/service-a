@@ -8,7 +8,6 @@ describe ProcessExternalUrlsRequest do
   let(:publisher) { instance_double(Publish) }
   let(:event_payload) { { request_id: external_urls_request.id }.to_json }
   let(:tweets) { [build(:tweet, :before_request_range)] }
-  let(:urls) { tweets.first.full_text.scan(described_class::URL_REGEXP) }
   let(:page1_options) do
     { exclude_replies: true, trim_user: true, include_rts: false, tweet_mode: :extended, count: 200 }
   end
