@@ -9,6 +9,7 @@ class ExternalUrlsRequest < ApplicationRecord
   validates :end_time, presence: true
 
   validate :end_time_after_start_time
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   enum status: %i[created processed sent]
 

@@ -20,10 +20,11 @@ describe ProcessExternalUrlsDeliveryRequest do
 
   let(:delivery_params) do
     {
-      mail_to: external_urls_request.email,
+      from: described_class::FROM,
+      to: external_urls_request.email,
       subject: external_urls_request.decorate.delivery_subject,
-      headers: { 'Reply-To': 'no-reply@anywhere.com' },
-      template_name: 'external_urls_request_results',
+      headers: { 'Reply-To': described_class::REPLY_TO },
+      template_name: described_class::TEMPLATE_NAME,
       template_payload: template_payload
     }
   end

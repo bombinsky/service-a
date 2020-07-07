@@ -14,6 +14,12 @@ describe ExternalUrlsRequest do
   it { is_expected.to allow_value(object.end_time - 1.second).for(:start_time) }
   it { is_expected.to allow_value(object.start_time + 1.second).for(:end_time) }
 
+  it { is_expected.not_to allow_value('email').for(:email) }
+  it { is_expected.not_to allow_value('email@').for(:email) }
+  it { is_expected.not_to allow_value('email@domain').for(:email) }
+
+  it { is_expected.to allow_value('email@domain.com').for(:email) }
+
   describe '#after_initialize' do
     before { allow(Time).to receive(:current).and_return current_time }
 
