@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe ExternalUrlsRequest do
-  subject(:object) { build :external_urls_request }
+  subject(:object) { ExternalUrlsRequest.new }
 
   it { is_expected.to belong_to :user }
   it { is_expected.to have_many :external_urls }
