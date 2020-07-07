@@ -6,5 +6,9 @@ FactoryBot.define do
     sequence(:email) { |i| "email-#{ i }@not_existing.domain.com" }
     start_time { Time.current - 1.day }
     end_time { Time.current }
+
+    trait :processed do
+      status { :processed }
+    end
   end
 end

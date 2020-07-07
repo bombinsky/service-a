@@ -15,9 +15,7 @@ describe ProcessExternalUrlsRequest do
   let(:page2_options) { page1_options.merge(max_id: tweets.first.id.pred) }
 
   shared_examples 'processed external urls request' do
-    it { is_expected.to be_a ExternalUrlsRequest }
-    it { is_expected.to be_persisted }
-    it { is_expected.to be_processed }
+    it { is_expected.to be_truthy }
 
     it 'publishes event in external_urls_delivery_requests queue' do
       service_call

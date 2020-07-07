@@ -18,7 +18,7 @@ class ProcessExternalUrlsRequest
 
     persist_request
     publish_request
-    request
+    true
   end
 
   private

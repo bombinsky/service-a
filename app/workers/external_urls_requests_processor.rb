@@ -5,7 +5,7 @@ class ExternalUrlsRequestsProcessor
   def work(msg)
     begin
       request = ExternalUrlsRequest.find(ActiveSupport::JSON.decode(msg)['request_id'])
-      ProcessExternalUrlsRequest.new(request).call if request.created?
+      ProcessExternalUrlsRequest.new(request).call
       ack!
     rescue Exception => e
       logger.info e.message

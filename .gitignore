@@ -9,6 +9,7 @@
 
 # Ignore all logfiles and tempfiles.
 sneakers.log
+sneakers.log.*
 /log/*
 /tmp/*
 !/log/.keep
@@ -35,5 +36,6 @@ yarn-debug.log*
 .rvmrc
 .idea/
 .env
+coverage/
 
-/config/credentials/development.key
+aconfig/credentials/development.key
