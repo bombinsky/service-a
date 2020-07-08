@@ -78,5 +78,4 @@ RSpec.configure do |config|
       info: { nickname: 'nickname', email: 'nickname@email.com' },
       credentials: { token: 'token', secret: 'secret' }
   })
-
 end
