@@ -70,4 +70,13 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include UserAuthHelper, type: :controller
+  config.include OauthSpecHelper, type: :feature
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:twitter, {
+      uid: '123545',
+      info: { nickname: 'nickname', email: 'nickname@email.com' },
+      credentials: { token: 'token', secret: 'secret' }
+  })
+
 end
