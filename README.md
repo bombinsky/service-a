@@ -49,11 +49,11 @@ SERVICE_B_BASIC_AUTH_PASSWORD=service_b
 
 ## Other commands useful during development
 
-1. Run specs to check them
+1. Run specs 
 
     ``` rspec ```
 
-2. Run specs to check them
+2. Run specs with code coverage
 
     ``` COVERAGE=true rspec ```
     ``` open tmp/reports/coverage/index.html ```
@@ -62,7 +62,7 @@ SERVICE_B_BASIC_AUTH_PASSWORD=service_b
 
     ``` rails c ```
 
-4. Check new code during development
+4. Check new code with cops during development
 
     ``` pronto run -r=flay rails_best_practices reek rubocop brakeman -c origin/develop ```
 
