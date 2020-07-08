@@ -75,7 +75,7 @@ SERVICE_B_BASIC_AUTH_PASSWORD=service_b
 
 #### Login page
 <p>
-  <img src="readme_images/sign_in_page.png" width="600" height="300">
+  <img src="readme_images/sign_in_page.png" width="600" height="150">
 </p>
 
 #### Welcome page
@@ -116,5 +116,5 @@ SERVICE_B_BASIC_AUTH_PASSWORD=service_b
 
 #### Rspec output
 <p>
-  <img src="readme_images/rspec_output.png" width="300" height="150">
+  <img src="readme_images/rspec_output.png" width="300" height="50">
 </p>
