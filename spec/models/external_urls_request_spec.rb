@@ -9,6 +9,7 @@ describe ExternalUrlsRequest do
   it { is_expected.to validate_presence_of :start_time }
   it { is_expected.to validate_presence_of :end_time }
 
+  it { is_expected.not_to allow_value(Time.current + 1.minute).for(:end_time) }
   it { is_expected.not_to allow_value(object.end_time).for(:start_time) }
   it { is_expected.not_to allow_value(object.start_time).for(:end_time) }
   it { is_expected.to allow_value(object.end_time - 1.second).for(:start_time) }

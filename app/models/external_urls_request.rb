@@ -10,6 +10,8 @@ class ExternalUrlsRequest < ApplicationRecord
   validates :end_time, presence: true
 
   validate :end_time_after_start_time
+  validate :end_time_in_past, if: :end_time
+
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   enum status: %i[created processed sent]
@@ -21,6 +23,10 @@ class ExternalUrlsRequest < ApplicationRecord
       self.start_time ||= Time.current - 1.day
       self.end_time ||= Time.current
     end
+  end
+
+  def end_time_in_past
+    errors.add(:end_time, 'cannot be in future') if end_time > Time.current
   end
 
   def end_time_after_start_time
