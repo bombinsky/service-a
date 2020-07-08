@@ -23,7 +23,6 @@ describe ProcessExternalUrlsDeliveryRequest do
     {
       from: described_class::FROM,
       to: decorated_request.email,
-      subject: decorated_request.delivery_subject,
       headers: { 'Reply-To': described_class::REPLY_TO },
       template_name: described_class::TEMPLATE_NAME,
       template_payload: template_payload

@@ -8,7 +8,6 @@ describe DeliveryGateway do
       {
         from: 'from',
         to: 'mail_to',
-        subject: 'subject',
         headers: 'headers',
         template_name: 'template_name',
         template_payload: 'template_payload'
