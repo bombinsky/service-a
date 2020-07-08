@@ -28,7 +28,6 @@ class ProcessExternalUrlsDeliveryRequest
     {
       from: FROM,
       to: request.email,
-      subject: request.delivery_subject,
       headers: { 'Reply-To': REPLY_TO },
       template_name: TEMPLATE_NAME,
       template_payload: template_payload
