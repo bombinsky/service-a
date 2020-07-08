@@ -18,6 +18,8 @@ feature 'User creates external urls request' do
   end
 
   scenario 'being authenticated creates a request then gets back to homepage' do
+    allow_service_call(Publish, with: ['external_urls_requests', kind_of(String)])
+
     login_with_oauth
     visit new_external_urls_request_path
     fill_in 'external_urls_request_email', with: 'bombinsky@gmail.com'
