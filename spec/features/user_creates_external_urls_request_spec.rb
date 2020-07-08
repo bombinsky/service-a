@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-feature 'User creates external urls request' do
-  scenario 'not being authenticated' do
+describe 'User creates external urls request' do
+  it 'not being authenticated' do
     visit new_external_urls_request_path
 
     expect(page).to have_link 'Twitter'
   end
 
-  scenario 'being authenticated but providing invalid params' do
+  it 'being authenticated but providing invalid params' do
     login_with_oauth
     visit new_external_urls_request_path
     fill_in 'external_urls_request_email', with: 'bombinsky'
@@ -17,7 +17,7 @@ feature 'User creates external urls request' do
     expect(page).to have_button 'Create request'
   end
 
-  scenario 'being authenticated creates a request then gets back to homepage' do
+  it 'being authenticated creates a request then gets back to homepage' do
     allow_service_call(Publish, with: ['external_urls_requests', kind_of(String)])
 
     login_with_oauth

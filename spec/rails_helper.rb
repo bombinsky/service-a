@@ -73,9 +73,11 @@ RSpec.configure do |config|
   config.include OauthSpecHelper, type: :feature
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.add_mock(:twitter, {
+  OmniAuth.config.add_mock(
+    :twitter, {
       uid: '123545',
       info: { nickname: 'nickname', email: 'nickname@email.com' },
       credentials: { token: 'token', secret: 'secret' }
-  })
+    }
+  )
 end
