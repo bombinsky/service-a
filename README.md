@@ -1,6 +1,6 @@
 # Service A
 
-This is a repository with few simple pages allowing to parse your twitter homeline in search of urls to external resources.
+This is a repository with few simple pages and workers allowing to parse your twitter homeline in search of urls to external resources. To have access to the service you have to be logged in to Twitter account. System is ready to process requests of multiple users.
 
 ## Required environmental variables
 
