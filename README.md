@@ -71,4 +71,50 @@ SERVICE_B_BASIC_AUTH_PASSWORD=service_b
     ```pronto run --commit=$(git log --pretty=format:%H | tail -1)```
 
 
+## Some screenshots for those who would like to skip application setup :) 
 
+#### Login page
+<p>
+  <img src="readme_images/sign_in_page.png" width="600" height="300">
+</p>
+
+#### Welcome page
+<p>
+  <img src="readme_images/welcome_page.png" width="600" height="300">
+</p>
+
+
+#### External urls request form
+<p>
+  <img src="readme_images/request_page.png" width="600" height="300">
+</p>
+
+#### Invalid external urls request
+<p>
+  <img src="readme_images/invalid_request_page.png" width="600" height="300">
+</p>
+
+#### External urls request details
+<p>
+  <img src="readme_images/request_details_page.png" width="600" height="300">
+</p>
+
+#### Queues in RabbitMQ 
+<p>
+  <img src="readme_images/rabbit_mq_queues.png" width="600" height="300">
+</p>
+
+#### Enqueued message in RabbitMQ
+<p>
+  <img src="readme_images/enqueued_message.png" width="600" height="300">
+</p>
+
+#### Code coverage report
+<p>
+  <img src="readme_images/code_coverage.png" width="600" height="400">
+</p>
+
+#### Rspec output
+<p>
+  <img src="readme_images/rspec_output.png" width="300" height="150">
+</p>
