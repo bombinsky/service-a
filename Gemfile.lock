@@ -88,6 +88,9 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    capybara-screenshot (1.0.24)
+      capybara (>= 1.0, < 4)
+      launchy
     childprocess (3.0.0)
     code_analyzer (0.5.2)
       sexp_processor
@@ -167,6 +170,8 @@ GEM
       activesupport (>= 5.0.0)
     json (2.3.1)
     kwalify (0.7.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -440,6 +445,7 @@ DEPENDENCIES
   bunny (>= 2.14.1)
   byebug
   capybara (>= 2.15)
+  capybara-screenshot
   database_cleaner-active_record
   dotenv-rails
   draper

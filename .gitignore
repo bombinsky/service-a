@@ -10,6 +10,7 @@
 # Ignore all logfiles and tempfiles.
 sneakers.log
 sneakers.log.*
+sneakers.pid
 /log/*
 /tmp/*
 !/log/.keep
