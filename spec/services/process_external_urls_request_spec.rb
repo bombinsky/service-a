@@ -94,6 +94,18 @@ describe ProcessExternalUrlsRequest do
         it 'creates external url' do
           expect { service_call }.to change(ExternalUrl, :count).by(1)
         end
+
+        it 'saves url for external url' do
+          service_call
+
+          expect(ExternalUrl.last.url).to eq 'https://youtube.com/some_url'
+        end
+
+        it 'saves page title for external url' do
+          service_call
+
+          expect(ExternalUrl.last.page_title).to eq 'Last url'
+        end
       end
     end
   end

@@ -14,16 +14,21 @@ describe ProcessExternalUrlsDeliveryRequest do
       nickname: decorated_request.user.nickname,
       request_id: decorated_request.id,
       request_created_at: '2020-01-10 22:55:33',
-      request_completed_at: '2020-01-11 23:11:22',
-      urls: decorated_request.external_urls.map(&:value)
+      request_updated_at: '2020-01-11 23:11:22',
+      request_end_time: '2020-01-04 11:33',
+      request_start_time: '2020-01-01 12:30',
+      urls: [
+        { page_title: 'Page title', url: 'https://external_link.com/url-2' },
+        { page_title: 'Page title', url: 'https://external_link.com/url-3' }
+      ]
     }
   end
 
   let(:delivery_params) do
     {
-      from: described_class::FROM,
+      from: Settings.mail_from,
       to: decorated_request.email,
-      headers: { 'Reply-To': described_class::REPLY_TO },
+      headers: { 'Reply-To': Settings.reply_to },
       template_name: described_class::TEMPLATE_NAME,
       template_payload: template_payload
     }

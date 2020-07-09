@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class represent User
 class User < ApplicationRecord
 
   has_many :external_urls_requests

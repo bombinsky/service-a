@@ -39,6 +39,8 @@ gem 'bunny', '>= 2.14.1'
 gem 'sneakers'
 # final_redirect_url
 gem 'final_redirect_url'
+# final_redirect_url
+gem 'mechanize'
 # draper
 gem 'draper'
 # faraday

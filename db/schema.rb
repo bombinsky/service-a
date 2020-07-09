@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 2020_07_04_215829) do
 
   create_table "external_urls", force: :cascade do |t|
     t.bigint "external_urls_request_id", null: false
-    t.string "value", null: false
-    t.index ["external_urls_request_id", "value"], name: "index_external_urls_on_external_urls_request_id_and_value", unique: true
+    t.string "page_title", null: false
+    t.string "url", null: false
+    t.index ["external_urls_request_id", "url"], name: "index_external_urls_on_external_urls_request_id_and_url", unique: true
     t.index ["external_urls_request_id"], name: "index_external_urls_on_external_urls_request_id"
   end
 
