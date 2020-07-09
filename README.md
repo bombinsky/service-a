@@ -23,6 +23,11 @@ SERVICE_B_URL=localhost:3001
 SERVICE_B_BASIC_AUTH_USERNAME=service_b
 SERVICE_B_BASIC_AUTH_PASSWORD=service_b
 ```
+Mail addresses required by delivery service
+```
+MAIL_FROM=mail_from
+REPLY_TO=reply_to_email_for_headers
+```
 
 ## Simple running instruction until docker files will be ready
 
