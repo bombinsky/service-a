@@ -2,7 +2,6 @@
 
 # Service Object responsible for delivery processed request results
 class ProcessExternalUrlsDeliveryRequest
-  REPLY_TO = 'noreply@noreply.com'
   TEMPLATE_NAME = 'external_urls_request_results'
 
   def initialize(request)
@@ -27,7 +26,7 @@ class ProcessExternalUrlsDeliveryRequest
     {
       from: Settings.mail_from,
       to: request.email,
-      headers: { 'Reply-To': REPLY_TO },
+      headers: { 'Reply-To': Settings.reply_to },
       template_name: TEMPLATE_NAME,
       template_payload: template_payload
     }

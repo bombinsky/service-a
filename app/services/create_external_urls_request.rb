@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# CreateExternalUrlsRequest
 class CreateExternalUrlsRequest
 
   def initialize(user, attributes)

@@ -1,5 +1,7 @@
-class Publish
+# frozen_string_literal: true
 
+# Publish
+class Publish
   def initialize(queue_name, payload)
     @queue_name = queue_name
     @payload = payload

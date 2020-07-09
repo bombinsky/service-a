@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# External Url
 class ExternalUrl < ApplicationRecord
   belongs_to :external_urls_request
 

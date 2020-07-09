@@ -1,5 +1,7 @@
-class ProcessExternalUrlsRequest
+# frozen_string_literal: true
 
+# ProcessExternalUrlsRequest
+class ProcessExternalUrlsRequest
   URL_REGEXP = /https?:\/\/[\S]+/.freeze
   FALLBACK_PAGE_TITLE = "Be careful - we couldn't fetch page title"
 
