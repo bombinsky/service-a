@@ -1,6 +1,7 @@
 class ProcessExternalUrlsRequest
 
   URL_REGEXP = /https?:\/\/[\S]+/.freeze
+  FALLBACK_PAGE_TITLE = "Be careful - we couldn't fetch page title"
 
   def initialize(request)
     @request = request
@@ -29,13 +30,17 @@ class ProcessExternalUrlsRequest
 
   def persist_request
     request.transaction do
-      @external_urls.uniq.each { |url| request.external_urls.create_or_find_by!(value: url) }
+      @external_urls.uniq.each { |url| request.external_urls.create_or_find_by!(url: url, page_title: page_title(url)) }
       request.processed!
     end
   end
 
   def publish_request
     Publish.new('external_urls_delivery_requests', { request_id: request.id }.to_json).call
+  end
+
+  def page_title(url)
+    Mechanize.new.get(url).title || FALLBACK_PAGE_TITLE
   end
 
   def collect_external_urls

@@ -26,8 +26,8 @@ describe DeliveryGateway do
         'SERVICE_B_BASIC_AUTH_PASSWORD' => 'password'
       )
 
-      stub_request(:post, 'http://service_b_url/emails').with(
-        body: delivery_params.to_json,
+      stub_request(:post, 'http://service_b_url/template_email_deliveries').with(
+        body: { template_email: delivery_params }.to_json,
         headers: {
           'Accept' => '*/*',
           'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',

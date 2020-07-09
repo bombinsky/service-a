@@ -5,10 +5,6 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*
 
-RSpec/MessageSpies:
-  Exclude:
-    - spec/support/matchers/receive_call_matcher.rb
-
 RSpec/NestedGroups:
   Max: 4
 

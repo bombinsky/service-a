@@ -8,7 +8,7 @@ class DeliveryGateway
       template_name: template_name,
       template_payload: template_payload
     }
-    connection.post('/emails', params.to_json, content_type: 'application/json')
+    connection.post('/template_email_deliveries', { template_email: params }.to_json, content_type: 'application/json')
   end
 
   private

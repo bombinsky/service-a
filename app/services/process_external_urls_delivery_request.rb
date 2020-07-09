@@ -40,7 +40,7 @@ class ProcessExternalUrlsDeliveryRequest
       request_id: request.id,
       request_created_at: request.created_at,
       request_completed_at: request.updated_at,
-      urls: request.external_urls.map(&:value)
+      urls: request.external_urls.map { |object| { url: object.url, page_title: object.page_title } }
     }
   end
 end

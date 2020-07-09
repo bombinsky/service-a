@@ -15,7 +15,10 @@ describe ProcessExternalUrlsDeliveryRequest do
       request_id: decorated_request.id,
       request_created_at: '2020-01-10 22:55:33',
       request_completed_at: '2020-01-11 23:11:22',
-      urls: decorated_request.external_urls.map(&:value)
+      urls: [
+        { page_title: 'Page title', url: 'https://external_link.com/url-2'},
+        { page_title: 'Page title', url: 'https://external_link.com/url-3'}
+      ]
     }
   end
 
