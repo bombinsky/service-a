@@ -11,6 +11,8 @@ class ProcessExternalUrlsRequest
   end
 
   def call
+    return true if request.processed?
+
     begin
       collect_external_urls
     rescue Twitter::Error::TooManyRequests => error
