@@ -9,6 +9,8 @@ class ProcessExternalUrlsDeliveryRequest
   end
 
   def call
+    return true if request.sent?
+
     request.sent! if delivery.success?
 
     delivery.success?

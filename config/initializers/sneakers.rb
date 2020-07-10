@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sneakers'
 Sneakers.configure connection: Connection.bunny,
                    daemonize: true,
@@ -5,8 +7,9 @@ Sneakers.configure connection: Connection.bunny,
                    threads: 1,
                    ack: true,
                    env: ENV['RACK_ENV'],
-                   heartbeat: 2,
+                   heartbeat: 20,
                    exchange: 'sneakers',
+                   exchange_type: :direct,
                    log: 'sneakers.log',
                    start_worker_delay: 1
 
