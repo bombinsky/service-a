@@ -45,11 +45,11 @@ REPLY_TO=reply_to_email_for_headers
 
 4. Run application server
 
-    ``` rails s```
+    ``` rails s ```
 
 5. Running background workers
 
-    ``` WORKERS=ExternalUrlsRequestsProcessor,ExternalUrlsDeliveryRequestsProcessor rake sneakers:run ```
+    ``` rake sneakers:run ```
 
 
 ## Other commands useful during development
